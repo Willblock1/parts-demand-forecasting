@@ -9,7 +9,7 @@ import mlflow
 spark.conf.set("spark.databricks.cloudFiles.schemaInference.sampleSize.numFiles", "10")
 db_prefix = "demand_planning"
 dbname = db_prefix
-catalog = 'will_block'
+catalog = 'ENTERYOURCATALOG'
 
 # COMMAND ----------
 

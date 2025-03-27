@@ -348,21 +348,6 @@ demand_df.write.mode("overwrite").saveAsTable(f"{catalog}.{dbname}.part_level_de
 
 # COMMAND ----------
 
-# spark.sql(f"DROP TABLE IF EXISTS will_block.{dbName}.part_level_demand")
-# spark.sql(f"CREATE TABLE will_block.{dbName}.part_level_demand")
-
-# # Write the data 
-# demand_df.write \
-# .mode("overwrite") \
-# .insertInto(f"will_block.{dbName}.part_level_demand")
-
-# COMMAND ----------
-
-# spark.sql(f"DROP TABLE IF EXISTS will_block.{dbName}.part_level_demand")
-# spark.sql(f"CREATE TABLE will_block.{dbName}.part_level_demand USING DELTA LOCATION '{demand_df_delta_path}'")
-
-# COMMAND ----------
-
 display(spark.sql(f"SELECT * FROM {catalog}.{dbname}.part_level_demand"))
 
 # COMMAND ----------
@@ -528,29 +513,8 @@ bom_df.write.mode("overwrite").saveAsTable(f"{catalog}.{dbname}.bom")
 
 # COMMAND ----------
 
-#spark.sql(f"DROP TABLE IF EXISTS will_block.{dbName}.bom")
-#spark.sql(f"CREATE TABLE will_block.{dbName}.bom USING DELTA LOCATION '{bom_df_delta_path}'")
-
-# COMMAND ----------
-
-# final_mat_number_to_sku_mapper_df_path = os.path.join(cloud_storage_path, 'sku_mapper_df_delta')
-
-# COMMAND ----------
-
-# final_mat_number_to_sku_mapper_df.write \
-# .mode("overwrite") \
-# .format("delta") \
-# .save(final_mat_number_to_sku_mapper_df_path)
-
-# COMMAND ----------
-
 spark.sql(f"DROP TABLE IF EXISTS {catalog}.{dbname}.sku_mapper")
 final_mat_number_to_sku_mapper_df.write.mode("overwrite").saveAsTable(f"{catalog}.{dbname}.sku_mapper")
-
-# COMMAND ----------
-
-# spark.sql(f"DROP TABLE IF EXISTS will_block.{dbName}.sku_mapper")
-# spark.sql(f"CREATE TABLE will_block.{dbName}.sku_mapper USING DELTA LOCATION '{final_mat_number_to_sku_mapper_df_path}'")
 
 # COMMAND ----------
 
