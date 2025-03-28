@@ -547,7 +547,6 @@ forecast_df.write.mode("overwrite").saveAsTable(f"{catalog}.{dbname}.part_level_
 
 # COMMAND ----------
 
-display(spark.sql(f"SELECT * FROM {dbname}.part_level_demand_with_forecasts"))
-
+display(spark.sql(f"SELECT * FROM {catalog}.{dbname}.part_level_demand_with_forecasts"))
 # COMMAND ----------
 
